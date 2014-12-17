@@ -119,8 +119,6 @@ string direction = "right";  //aliens move direction
 string bigdirection = "left";  //bigaliens move direction
 bool result = false;  // the result of first level
 
-///闪/退！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-
 void redisplay_all()
 {
     glutPostRedisplay();
@@ -419,7 +417,7 @@ bool Matrix(float anmovespeed, int levelNum)
 				{
 					if (collision(itr3->x, itr3->z, itr1->x, itr1->z))
 					{
-						//爆炸旁边有不知名的三角形！！！
+
 						//alienexplode
 						anpmodelExplode = glmReadOBJ("inputs/Space_Invader_explode.obj");
 						if (!anpmodelExplode) exit(0);
@@ -506,7 +504,7 @@ bool Matrix(float anmovespeed, int levelNum)
 		glmUnitize(biganpmodelExplode);
 		glmFacetNormals(biganpmodelExplode);
 		glmVertexNormals(biganpmodelExplode, 90.0); //calculate smooth vertex normals of the model
-		//因为bigaliens已经被移除了，itr6为空
+
 		//itr6 = bigaliens.begin();
 		glTranslatef(bigexplodex-5, bigexplodey, bigexplodez);
 		glRotatef(90, 0, 1,0); 
@@ -804,7 +802,7 @@ bool Matrix(float anmovespeed, int levelNum)
 	itr1 = aliens.begin();
 	if (score == 1000 || itr1->x >= 12 || sps[0].lifeNum == 0)
 	{   //end game when all the aliens are gone
-		//游戏结束后，显示Game  Over 画面停止没有实现！ 可以用分数等于1000来判断
+	
 		
 		if (soundeffect == true) PlaySound("inputs\\Blast2.wav",NULL, SND_ASYNC | SND_FILENAME);
 		glPushMatrix();
@@ -816,32 +814,6 @@ bool Matrix(float anmovespeed, int levelNum)
 		
 		return true;
 	}
-
-	////飞机爆炸！！！！！！！！！！！！！
-	////GameOver Spaceship explode
-	//itr1 = aliens.begin();
-	//if(frame - spexplodeframe < 3 && frame > 3)
-	//{
-	//	//spaceship explode
-	//	if (soundeffect == true) PlaySound("inputs\\Blast.wav",NULL, SND_ASYNC | SND_FILENAME);
-
-	//	sppmodelExplode = glmReadOBJ("inputs/Space_Invader_explode.obj");
-	//	if (!sppmodelExplode) exit(0);
-	//	glmUnitize(sppmodelExplode);
-	//	glmFacetNormals(sppmodelExplode);
-	//	glmVertexNormals(sppmodelExplode, 90.0); //calculate smooth vertex normals of the model
-	//	glTranslatef(sps[0].x, sps[0].y, sps[0].z);
-	//	glRotatef(90, 0, 1,0); 
-	//	glScalef(2.0, 2.0, 2.0);
-	//	glPushMatrix();
-	//		glColor4ub(255, 230, 2, 1);
-	//	glPopMatrix();
-	//	glmDraw(sppmodelExplode, GLM_SMOOTH | GLM_MATERIAL);
-
-	//	Sleep(200);
-	//	sps[0].x = -100;
-	//	return true;
-	//}
 }
 
 void display(void) 
